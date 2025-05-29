@@ -46,8 +46,6 @@ def create_table():
 
 create_table()
 
-# ------------------- AUTH -------------------
-
 @app.route('/register', methods=['POST'])
 def register():
     data = request.get_json()
@@ -104,7 +102,7 @@ def protected():
     current_user = get_jwt_identity()
     return jsonify(logged_in_as=current_user), 200
 
-# ------------------- USERS API -------------------
+# API
 
 @app.route("/users", methods=["GET"])
 @swag_from({
@@ -155,9 +153,6 @@ def update_user(user_id):
     conn.close()
     return jsonify({"message": "User updated"}), 200
 
-# ------------------- HTML Views (optional) -------------------
-
-# ------------------- HTML Views (optional) -------------------
 
 @app.route('/')
 def home():
